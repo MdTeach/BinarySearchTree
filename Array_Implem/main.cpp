@@ -2,6 +2,11 @@
 #include "BinaryT.h"
 
 int main(){
+    BinaryT bt;
+
+    bt.add(10);
+
+    
+
     return 0;
-    std::cout<<"Hello"<<std::endl;
 }
