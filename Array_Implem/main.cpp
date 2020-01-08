@@ -24,7 +24,15 @@ int main(){
     std::cout<<"\n\n";
 
     bt.traverse(VLR);
-    std::cout<<"\n\n";
+    std::cout<<"\n";
+
+    if(bt.dataExists(2)){
+        std::cout<<"Yes\n";
+    }else{
+        std::cout<<"Nope\n";
+    }
+
+    bt.remove(0);
 
     return 0;
 }

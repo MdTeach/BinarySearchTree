@@ -68,4 +68,8 @@ class BinaryT{
     //returns the index of its left child
     int getLeftChildIndex(int key);
 
+    //search in each node
+    bool findInNode(Node* root, int data);
+    int findRootInNode(Node* root,int data);
+
 };

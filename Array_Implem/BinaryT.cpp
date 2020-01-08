@@ -23,13 +23,10 @@ void BinaryT::add(int data){
 
 
 bool BinaryT::isEmpty(){
-    //std::cout<<"sad"<<(datas[1] == NULL)<<"*****\n";
     return (this->datas[1] == NULL);
 }
 
 void BinaryT::insert(Node* root, Node* node, int key){
-
-
     if(root == NULL){
         node->key = key;
         datas[key] = node;
@@ -129,3 +126,59 @@ int BinaryT::getLeftChildIndex(int key){
     return 2*key + 1;
 }
 
+
+//Searching 
+bool BinaryT::dataExists(int data){
+    if(isEmpty()) return false;
+    Node* root = datas[1];
+    return findInNode(root, data);
+}
+
+bool BinaryT::findInNode(Node* root, int data){
+    if(root == NULL)return false;
+    if(root->data == data)return true;
+    if(root->data > data){
+        Node* left = datas[getLeftChildIndex(root->key)];
+        return findInNode(left,data);
+    }else{
+        Node* right = datas[getRightChildIndex(root->key)];
+        return findInNode(right,data);
+    }
+}
+
+int BinaryT::find(int data){
+    if(isEmpty()) return 0;
+    Node* root = datas[1];
+    return findRootInNode(root, data);
+}
+
+int BinaryT::findRootInNode(Node* root,int data){
+    if(root == NULL)return 0;
+    if(root->data == data)return root->key;
+    if(root->data > data){
+        Node* left = datas[getLeftChildIndex(root->key)];
+        return findRootInNode(left,data);
+    }else{
+        Node* right = datas[getRightChildIndex(root->key)];
+        return findRootInNode(right,data);
+    }
+}
+
+//remvoving part
+void BinaryT::remove(int data){
+    int keyToBeRemoved = find(data);
+    if(keyToBeRemoved == 0){
+        std::cout<<"Data not found";
+    }else{
+        
+        Node* nodeToRemove = datas[keyToBeRemoved];
+        Node* left = datas[getLeftChildIndex(nodeToRemove->key)];
+        Node* right = datas[getRightChildIndex(nodeToRemove->key)];
+        if(left == NULL && right == NULL){
+            //Its a leaf so just delete
+            delete nodeToRemove;
+        }else{
+            //TODO:
+        }
+    }
+}
