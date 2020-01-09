@@ -1,5 +1,5 @@
 <h1>Binary tree</h1>
-<h2>2)Array Implementation</h2>
+<h2>1)Array Implementation</h2>
 
 ```c++
 //Return the number of nodes in the tree
@@ -25,4 +25,4 @@ void traverse(Traverse traverse);
 bool isEmpty();
 ```
 <h3>Sample Output</h3>
-![alt text](https://github.com/MdTeach/BinaryTree/blob/master/Array_Implem/Screenshot%20from%202020-01-09%2023-12-46.png)
+![alt text](https://github.com/MdTeach/BinaryTree/blob/master/Array_Implem/Screenshot%20from%202020-01-09%2023-12-46.png?raw=true)
