@@ -45,6 +45,7 @@ void BinaryT::insert(Node* root, Node* node, int key){
 
 //Public
 void BinaryT::traverse(Traverse trav){
+    std::cout<<"****\n";
     if(isEmpty()) throw "Tree is empty";
     Node* root = datas[1];
     if(trav == LVR){
@@ -54,6 +55,7 @@ void BinaryT::traverse(Traverse trav){
     }else if(trav == LRV){
         traverseLRV(root);
     }
+    std::cout<<"\n****\n";
 } 
 
 //LVR
@@ -63,7 +65,7 @@ void BinaryT::traverseLVR(Node* root){
         Node* left = datas[getLeftChildIndex(root->key)];
         traverseLVR(left);
         
-        std::cout << root->data <<std::endl;
+        std::cout << root->key <<" ";
 
         Node* right = datas[getRightChildIndex(root->key)];
         traverseLVR(right);
@@ -73,7 +75,7 @@ void BinaryT::traverseLVR(Node* root){
 //VLR
 void BinaryT::traverseVLR(Node* root){
     if(root != NULL){
-        std::cout << root->data <<std::endl;
+        std::cout << root->data <<" ";
         
         Node* left = datas[getLeftChildIndex(root->key)];
         traverseVLR(left);
@@ -93,7 +95,7 @@ void BinaryT::traverseLRV(Node* root){
         Node* right = datas[getRightChildIndex(root->key)];
         traverseLRV(right);
 
-        std::cout << root->data <<std::endl;
+        std::cout << root->data <<" ";
     } 
 }
         
@@ -119,11 +121,11 @@ int BinaryT::size(Node* root){
 
 
 int BinaryT::getRightChildIndex(int key){
-    return 2*key;
+    return 2*key+1;
 }
 
 int BinaryT::getLeftChildIndex(int key){
-    return 2*key + 1;
+    return 2*key;
 }
 
 
@@ -166,19 +168,48 @@ int BinaryT::findRootInNode(Node* root,int data){
 
 //remvoving part
 void BinaryT::remove(int data){
+    if(isEmpty()) throw "Tree is empty";
     int keyToBeRemoved = find(data);
     if(keyToBeRemoved == 0){
         std::cout<<"Data not found";
     }else{
-        
-        Node* nodeToRemove = datas[keyToBeRemoved];
-        Node* left = datas[getLeftChildIndex(nodeToRemove->key)];
-        Node* right = datas[getRightChildIndex(nodeToRemove->key)];
-        if(left == NULL && right == NULL){
-            //Its a leaf so just delete
-            delete nodeToRemove;
-        }else{
-            //TODO:
-        }
+        //recursively shift the data and remove the node :D
+        Node* root = datas[keyToBeRemoved];
+        shiftChildToRoot(root);   
     }
+
+}
+
+void BinaryT::shiftChildToRoot(Node* root){
+    Node* left = datas[getLeftChildIndex(root->key)];
+    Node* right = datas[getRightChildIndex(root->key)];
+    
+
+    if(left == NULL && right == NULL){
+        //Its a leaf so just delete
+        root = NULL;
+    }else if(left != NULL && right != NULL){
+        //both left and right nodes present
+
+        // 1: get the largest of the two nodes
+        Node* largest = (left->data > right->data) ? left : right; 
+        root->data = largest->data;
+
+        // 2: the largest child node to the top and do recursion
+        shiftChildToRoot(largest);
+    }else{
+        //either of the node is present
+        if(left == NULL){
+            //right
+            root->data = right->data;
+            shiftChildToRoot(right);
+
+        }else{
+            //left
+            root->data = left->data;
+            shiftChildToRoot(left);
+        }
+
+    }
+
 }

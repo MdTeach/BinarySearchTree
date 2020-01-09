@@ -4,35 +4,43 @@
 int main(){
     BinaryT bt;
 
-    //std::cout<<"Size is "<<bt.size()<<" \n";
+    //Adding the data
 
     bt.add(10);
-    std::cout<<"Size is "<<bt.size()<<" \n";
-
-    if(bt.isEmpty()){std::cout<<"EMpts";}else{std::cout<<"Fine\n";}
-    
     bt.add(0);
     bt.add(12);
     bt.add(14);
     bt.add(2);
     bt.add(7);
 
+    std::cout<<"\nSize is "<<bt.size()<<" \n";
+    std::cout<<"Traverse LVR"<<std::endl;
     bt.traverse(LVR);
-    std::cout<<"\n\n";
+    std::cout<<std::endl;
     
+    std::cout<<"Traverse LRV"<<std::endl;
     bt.traverse(LRV);
-    std::cout<<"\n\n";
+    std::cout<<std::endl;
 
+    std::cout<<"Traverse VLR"<<std::endl;
     bt.traverse(VLR);
-    std::cout<<"\n";
-
+    std::cout<<std::endl;
+    
+    std::cout<<"Does 2 exists ?"<<std::endl;
     if(bt.dataExists(2)){
         std::cout<<"Yes\n";
     }else{
         std::cout<<"Nope\n";
     }
+    std::cout<<std::endl;
 
+    std::cout<<"Remove 0"<<std::endl;
     bt.remove(0);
+    std::cout<<std::endl;
+
+    std::cout<<"Traverse LVR again"<<std::endl;
+    bt.traverse(LVR);
+    std::cout<<"\nAll done";
 
     return 0;
 }

@@ -72,4 +72,7 @@ class BinaryT{
     bool findInNode(Node* root, int data);
     int findRootInNode(Node* root,int data);
 
+    //for removing the node shift the data from lower node to highter
+    void shiftChildToRoot(Node* root);
+
 };
