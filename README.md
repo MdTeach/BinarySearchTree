@@ -25,4 +25,6 @@ void traverse(Traverse traverse);
 bool isEmpty();
 ```
 <h3>Sample Output</h3>
-![My image](https://github.com/MdTeach/BinaryTree/blob/master/Array_Implem/Screenshot%20from%202020-01-09%2023-12-46.png)
+
+
+![ScreenShot](https://raw.githubusercontent.com/MdTeach/BinaryTree/master/Array_Implem/Screenshot%20from%202020-01-09%2023-12-46.png)
